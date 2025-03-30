@@ -1,0 +1,277 @@
+/* Nous cassons (reset) l'effet d'héritage pour toutes les balises susceptibles d'être concernées */
+html, body, div, span, applet, object, iframe, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,b, u, i, center, dl, dt, dd, ol, ul, li,fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-decoration: none;
+}
+
+
+/* GESTION DES 3 FONDS D'ECRAN */
+
+body.initial-background {
+    background-image: url("img/1.Background-accueil.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+body.quiz-background {
+    background-image: url("img/2c.Background-questions.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+body.replay-background {
+    background-image: url("img/3.Background-finalscore&rejouer.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+
+/* div INTRO */
+#intro{
+    width: 90%;
+    font-family: "Roboto";
+    font-size: 1em;
+    color : white;
+    font-style: italic;
+    text-align: center;
+    margin-left: 2em;
+    margin-right : 2em;
+    padding: 15px;
+    background-color: rgba(211, 229, 235, 0.25); /* Bleu clair avec 50% de transparence */
+    box-shadow: 10px 10px 20px rgba(146, 178, 237, 0.7); /*Ombre bleu clair avec 70% de transparence*/
+    border-radius: 15px;
+}
+
+#quiz-container{
+    margin: 0, 150px;
+}
+#options-container{
+    margin: 20px 6px 40px 6px;
+    padding: 20px 120px;
+}
+#options-container button{
+    padding: 12px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h1{
+    text-align: center;
+    font-family: "Roboto";
+    color : orange;
+    font-size: 3.5em;
+    text-shadow : #a7c728;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* div Questions */
+#question-text{
+    font-family: "Roboto";
+    font-size: 2em;
+    color: antiquewhite;
+    margin : 1em 2em;
+    padding : 1em;
+    /* border-bottom: 7px double #bae705;
+    background-color: rgba(8, 84, 159, 0.5);
+    border-radius :0 15px 0 15px;
+    box-shadow: 10px 10px 25px rgb(8, 115, 229); */
+    }
+.question{
+    display: flex;
+    flex-direction: column;
+}
+#score-correct-answer{
+    font-family: "Roboto";
+    color: white;
+    font-size: 2em;
+    margin : 15px;
+    padding : 8px;
+    /* border: 4px solid blue; */
+    text-align: center;
+    /* background-color: aquamarine; */
+}
+
+
+#container-suivant-timer{
+    padding: 2em;
+    justify-content: space-between;
+}
+#warningTimerContainer{
+    width: 40%;
+    font-size: 2em;
+    font-weight: bold;
+}
+/* #warningTimer{
+    text-align: right;
+} */
+#warningTimer{
+    color: darkblue;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: "Roboto";
+    padding: 8px;
+    border-radius: 50px;
+    border: 6px solid #a7c728;
+    background-color: violet;
+    text-align: left;
+    width: 30% auto;
+}
+
+/*  BOUTONS */
+
+/* Bouton "Let's go!" */
+#start-button{
+    margin: 1em auto;
+    text-align : center;  /* centre le texte à l'intérieur du bouton */
+    padding : 20px 8px;
+    font-size: 2em;
+    background-color:#a7c728;
+    width: 30%;
+    border-radius: 0 10px 0 10px;
+    box-shadow: 12px 12px 10px violet;
+}
+/* Bouton "Suivant" */
+#next-button{
+    margin: 20px 0 0 10px;
+    padding : 8px 8px;
+    font-size: 1.75em;
+    background-color:#953ce2;
+    width: 100%;
+    box-shadow: 12px 12px 10px #bae705;
+    border-radius: 0 10px 0 10px;
+}
+
+/* Bouton "Rejouer"*/
+#replay-button{
+    margin: 50px;
+    text-align : center;  /* centre le bouton */
+    padding : 15px 10px;
+    font-size: 2.35em;
+    letter-spacing: 3px;
+    font-weight: bold;
+    background-color:rgba(221, 97, 221, 0.878);
+    border: 8px dotted rgba(211, 220, 50);
+    color:#386e11;
+    width: 80%;
+    /* height: 20px; */
+    border-radius: 15px;
+    cursor: pointer;
+    text-shadow: 1px 1px 5px yellow;
+    box-shadow: 2px 2px 10px yellow;
+    animation : pulse 1s infinite;
+} 
+@keyframes pulse{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform : scale(1.05);
+    }
+    100%{
+        transform : scale(1);
+     }
+}
+
+
+
+/* Bouton Options */
+.boutonOptionsCSS{
+    margin : 10px;
+    padding : 12px;
+    background-color: rgba(95, 158, 160, 0.5);
+    color : rgb(36, 36, 148);
+    border-radius : 10px;
+    cursor :pointer;
+    box-shadow: 0 4px 4px orange;
+    transition: transform 0.2s ease-in-out; /* animation */
+}
+
+/* PROGRESS BAR */
+
+#progressFusee{
+margin-top : 230px;
+}
+
+#progress-bar-container {
+    width: 80%;
+    height: 50px;
+    justify-content: center;
+    background-color: white;
+    border: 3px solid greenyellow;
+    box-shadow: 8px 8px -8px -8px 10px greenyellow;
+    border-radius: 5px;
+    /* margin: 15px, 0; */
+    margin-top: 200px 10px;
+    /* margin-bottom: 10px; */
+}
+
+#progress-bar {
+    width: 0%;   /* on demarre la barre à 0 puis elle s'élargira après chaque réponse */
+    height: 50px;
+    /* margin: 15px, 0; */
+    background-color: hsl(262, 39%, 49%); /* Couleur de la barre de progression */
+    border-radius: 5px;
+    transition: width 0.3s ease;
+    margin-top: 200px 10px;
+    /* justify-content: space-between;
+    position: relative; */
+}
+
+
+#messageJoueur{
+    width : 70%;
+    font-family: "Roboto";
+    font-size: 1.75em;
+    margin : 10px 20px;
+    color :aliceblue;
+    padding : 12px;
+    border: 4px solid hsl(262, 39%, 49%);
+    border-radius: 10px;
+    text-align: center;
+    background-color:rgba(94, 146, 243, 0.5);
+}
+
+.hidden{
+	display: none;
+}
+
+
+/* #warningTimer{
+    color:lightseagreen;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: "Roboto";
+    padding: 5px;
+    border: 1px solid blue;
+    text-align: left;
+    width: 50%;
+} */
+
+#dernierePage{
+    margin: -200px;
+    align-items: center;
+}
+
+
+
+
