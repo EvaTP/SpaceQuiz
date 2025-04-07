@@ -2,7 +2,7 @@
 
 Ce projet a été réalisé en mars 2025 dans le cadre d'un exercice collectif au sein de l'école ADA TECH SCHOOL.
 
-## Description
+## 📓 Description
 
 L'objectif de ce projet était de développer une application de quiz interactive en utilisant des technologies front-end telles que HTML, CSS et JavaScript.
 
@@ -11,7 +11,7 @@ Le but principal était de permettre aux utilisateur·ices de répondre à une s
 Un autre objectif était d'apprendre à travailler en équipe en utilisant les méthodes agiles et un outil de gestion de proje.
 
 
-## Stack
+## 🛸 Stack
 
 - JavaScript
 - HTML
@@ -19,7 +19,7 @@ Un autre objectif était d'apprendre à travailler en équipe en utilisant les m
 - Autres : Canva, outil Trello
 
 
-## Equipe
+## 👽 Equipe
 
 Eva THARRATS -
 Romain CHOUHANI -
