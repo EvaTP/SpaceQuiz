@@ -1,4 +1,4 @@
-# PROJET SPACEQUIZ
+# 🚀 PROJET SPACEQUIZ
 
 Ce projet a été réalisé en mars 2025 dans le cadre d'un exercice collectif au sein de l'école ADA TECH SCHOOL.
 
@@ -21,8 +21,8 @@ Un autre objectif était d'apprendre à travailler en équipe en utilisant les m
 
 ## Equipe
 
-Eva THARRATS
-Romain CHOUHANI
+Eva THARRATS -
+Romain CHOUHANI -
 Hanane BENABID
 
 ## Crédits
