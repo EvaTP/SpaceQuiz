@@ -3,91 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz Espace</title>
+<title>Quiz de l'Espace</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- police h1 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Sixtyfour+Convergence&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
 <link rel="icon" type="image/svg" sizes="32x32" href="img/favicon-space-quiz.svg">
 </head>
 <body class="initial-background">
 	<h1>🚀 Vers l'infini et au-delà... 🪐</h1>
-	<!-- <p id="intro"></p> -->
-
-		<div id="div-intro">
-					<p id="intro">
-						<!-- L'introduction sera injectée ici par JavaScript  -->
-					</p>
-		</div>
+	
+	<div id="div-intro">
+		<p id="intro">
+			<!-- L'introduction sera injectée ici par JavaScript  -->
+		</p>
+	</div>
 	
 	<div id="quiz-container" class="fond-espace">
-
-		<!-- <p id="intro">
-			L'introduction sera injectée ici par JavaScript -->
-		<!-- </p>  -->
-				<!-- <div id="div-intro">
-					<p id="intro">
-						!L'introduction sera injectée ici par JavaScript 
-					</p>
-				</div> -->
 
 	  <div class="question" id="question-text">
 		<!-- La question sera injectée ici par JavaScript -->
 	  </div>
   
-	  
 	  <div class="options flex-column" id="options-container">
 		<!-- Les options seront injectées ici par JavaScript -->
 	  </div>
-
-	  <!-- <div class="flex-column hidden" id="score-correct-answer">
-		Le score des bonnes réponses sera injectée ici par JavaScript
-	  </div>-->
-
-	  <!-- <div class="flex-column hidden" id="messageJoueur">
-		Affichage du message en fonction du score
-	  </div> -->
-  
 
 	  <div class="button-container flex-column">
 		<button id="start-button">Let's go!</button>
 	  </div>
 	 
+	<!-- PROGRESS BAR -->
+		<div id="progress-bar-container" class="flex-column hidden">
+			<div id="progress-bar"><!-- Affichage dynamique de la progression --></div>
+			<img src="img/FUSEE_MAUVE4.png" id="fuseeProgress" class="hidden" alt="fusee-progress-bar">
+		</div>
+		<div id="progress-bar-text">
+			<span id="questionCounter"><!-- Affichage dynamique du nbr de questions restantes --></span>
+		</div>
+
+
 	  <div class="button-container flex-row" id="container-suivant-timer">
 		<div><button id="next-button" class="hidden" disabled>Suivant</button></div>
 		<!-- <div id="warningTimerContainer"></div> -->
 			<p id="warningTimer" class="hidden"><!-- Affichage du compte à rebours --></p>
 	  </div>
 
-	  <p id="timerPhrase" class="hidden"></p>
+	  <!-- <p id="timerPhrase" class="hidden"></p> -->
 
 
-	  <!-- DIV CONTENANT SCORE, MESSAGE JOUEUR ET BOUTON REJOUER -->
+	  <!-- DIV "DERNIERE PAGE" CONTENANT SCORE, MESSAGE JOUEUR ET BOUTON REJOUER -->
 
+	 	<div id="dernierePage" class="flex-column">
+			<div class="flex-column hidden" id="score-correct-answer">
+				<!-- Le score des bonnes réponses sera injectée ici par JavaScript -->
+			</div>
 
+			<div class="flex-column hidden" id="messageJoueur">
+			<!-- Affichage du message en fonction du score -->
+			</div>
 
-	 <div id="dernierePage" class="flex-column">
-		<div class="flex-column hidden" id="score-correct-answer">
-			<!-- Le score des bonnes réponses sera injectée ici par JavaScript -->
+			<div class="button-container flex-column">
+				<button id="replay-button" class="hidden">Rejouer 💫</button>
+			</div>
 		</div>
-
-		<div class="flex-column hidden" id="messageJoueur">
-		<!-- Affichage du message en fonction du score -->
-		</div>
-		<div class="button-container flex-column">
-			<button id="replay-button" class="hidden">Rejouer 💫</button>
-		</div>
-	</div>
-
-
-
-
-	  <div id="progressFusee" >
-		<img src="img/FUSEE_MAUVE.png" id="fuseeprogress" class="hidden" alt="fusee-progress-bar" width="100" height="90">
-	  </div>
-	  <div id="progress-bar-container" class="flex-column hidden">
-			<div id="progress-bar"><!-- Affichage de la progression --></div>
-	  </div>
 	</div>
 	
-	<!-- Importe ici ton fichier JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 	<script type="module" src="game.js"></script>
 

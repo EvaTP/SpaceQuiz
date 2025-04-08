@@ -68,7 +68,8 @@ body.replay-background {
 
 h1{
     text-align: center;
-    font-family: "Roboto";
+    font-family: "Audiowide", sans-serif;
+    /* font-family: "Sixtyfour Convergence", sans-serif; */
     color : orange;
     font-size: 3.5em;
     text-shadow : #a7c728;
@@ -100,30 +101,24 @@ h1{
     display: flex;
     flex-direction: column;
 }
-#score-correct-answer{
-    font-family: "Roboto";
-    color: white;
-    font-size: 2em;
-    margin : 15px;
-    padding : 8px;
-    /* border: 4px solid blue; */
-    text-align: center;
-    /* background-color: aquamarine; */
-}
-
 
 #container-suivant-timer{
-    padding: 2em;
-    justify-content: space-between;
+    position : relative;
+    flex-direction: row;
+    margin-top: 4em;
+    margin-bottom : 0.50em;
+    padding: 0.25em 0.5em;
+    justify-content:space-evenly;
+    align-items:baseline;
+    /* padding: 2em;
+    justify-content: space-between; */
 }
 #warningTimerContainer{
     width: 40%;
     font-size: 2em;
     font-weight: bold;
 }
-/* #warningTimer{
-    text-align: right;
-} */
+
 #warningTimer{
     color: darkblue;
     font-size: 2em;
@@ -135,6 +130,7 @@ h1{
     background-color: violet;
     text-align: left;
     width: 30% auto;
+    margin-top: 70px;
 }
 
 /*  BOUTONS */
@@ -163,7 +159,7 @@ h1{
 
 /* Bouton "Rejouer"*/
 #replay-button{
-    margin: 50px;
+    margin: 100px 70px 100px 10px;
     text-align : center;  /* centre le bouton */
     padding : 15px 10px;
     font-size: 2.35em;
@@ -173,7 +169,6 @@ h1{
     border: 8px dotted rgba(211, 220, 50);
     color:#386e11;
     width: 80%;
-    /* height: 20px; */
     border-radius: 15px;
     cursor: pointer;
     text-shadow: 1px 1px 5px yellow;
@@ -193,7 +188,6 @@ h1{
 }
 
 
-
 /* Bouton Options */
 .boutonOptionsCSS{
     margin : 10px;
@@ -205,50 +199,79 @@ h1{
     box-shadow: 0 4px 4px orange;
     transition: transform 0.2s ease-in-out; /* animation */
 }
+.boutonOptionsCSS:hover {
+    transform: scale(1.05) translateY(-5px); /* Agrandissement et léger mouvement vers le haut */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+  }
 
-/* PROGRESS BAR */
 
-#progressFusee{
+/* PROGRESS BAR 🚀 */
+
+/* #progressFusee{
 margin-top : 230px;
-}
+} */
 
 #progress-bar-container {
+    position: relative;
     width: 80%;
-    height: 50px;
+    height: 40px;
     justify-content: center;
-    background-color: white;
-    border: 3px solid greenyellow;
-    box-shadow: 8px 8px -8px -8px 10px greenyellow;
+    background-color: rgba(255, 255, 255, 0.915);
+    border: 4px solid greenyellow;
+    box-shadow: -10px -10px 10px #dce705;
+    /* box-shadow: 8px 8px -8px -8px 10px greenyellow; */
     border-radius: 5px;
-    /* margin: 15px, 0; */
-    margin-top: 200px 10px;
-    /* margin-bottom: 10px; */
+    margin-top: 60px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+    /* margin-top: 200px 10px; */
 }
 
 #progress-bar {
     width: 0%;   /* on demarre la barre à 0 puis elle s'élargira après chaque réponse */
     height: 50px;
     /* margin: 15px, 0; */
-    background-color: hsl(262, 39%, 49%); /* Couleur de la barre de progression */
+    background-image: linear-gradient(to right, rgba(150, 100, 200, 0.5), hsl(262, 39%, 49%)); /* Dégradé du violet clair au violet foncé */
+    /* background-color: hsl(262, 39%, 49%);  Couleur de la barre de progression */
     border-radius: 5px;
     transition: width 0.3s ease;
-    margin-top: 200px 10px;
-    /* justify-content: space-between;
+
+    /* margin-top: 200px 10px;
+    justify-content: space-between;
     position: relative; */
 }
-
-
-#messageJoueur{
-    width : 70%;
-    font-family: "Roboto";
-    font-size: 1.75em;
-    margin : 10px 20px;
-    color :aliceblue;
-    padding : 12px;
-    border: 4px solid hsl(262, 39%, 49%);
-    border-radius: 10px;
-    text-align: center;
-    background-color:rgba(94, 146, 243, 0.5);
+#fuseeProgress{
+    position: absolute;
+    width: 170px;
+    height: 150px;
+    bottom: -55px; /* position verticale de la fusée */
+    left: -20px; /* Position initiale à gauche */
+    /* width: 30px; Ajustez la taille de l'image */
+    transition: left 0.3s ease; /* Ajoute une transition pour un mouvement fluide */
+}
+#progress-bar-text {
+    position:absolute;
+    left: 0px;
+    /* top: 70px;  Positionnez la div sous la barre de progression */
+    width: 100%;
+    height: 20px; /* Ajustez la hauteur selon vos besoins */
+    background-color: transparent; /* Supprimez la couleur de fond */
+    /* 
+    progress-bar-text a un positionnement absolute.
+    Cela signifie que sa position est déterminée par les propriétés top, left, bottom et right,
+    et non par les marges. Margin-top, etc, ne peuvent pas fonctionnner.
+    */
+}
+#questionCounter{
+    position: absolute; /* Position absolue pour le positionner par rapport à la barre de progression */
+   top: 150%;
+   left: 5px; /* Position initiale à gauche */
+   bottom: -25px; /* Positionnez le texte en dessous de la barre de progression */
+   font-family: "Roboto";
+   font-size: 1.25em;
+   font-style: italic;
+   color: #e29300;
+   white-space: nowrap; /* Empêcher le texte de passer à la ligne */
 }
 
 .hidden{
@@ -267,9 +290,49 @@ margin-top : 230px;
     width: 50%;
 } */
 
+/* STYLES DERNIERE PAGE */
+
 #dernierePage{
-    margin: -200px;
+    margin: -300px;
     align-items: center;
+}
+
+#score-correct-answer{
+    font-family: "Audiowide", sans-serif;
+    /* font-family: "Roboto"; */
+    color: white;
+    font-size: 3.5em;
+    padding : 8px;
+    /* border: 4px solid blue; */
+    text-align: center;
+}
+
+#messageJoueur{
+    width : 60%;
+    font-family: "Roboto";
+    font-size: 2em;
+    margin : 10px 20px;
+    color :aliceblue;
+    padding : 14px;
+    border: 4px solid hsl(262, 39%, 49%);
+    border-radius: 10px;
+    text-align: center;
+    background-color:rgba(94, 146, 243, 0.5);
+}
+
+
+#dernierePage #progress-bar-container {
+    margin-top: 350px; /* Ajustez cette valeur pour déplacer la barre de progression dans #dernierePage */
+     margin-left: auto;  /* Pour centrer horizontalement dans #dernierePage si besoin */
+    margin-right: auto;
+}
+
+#dernierePage #fuseeProgress {
+    bottom: -115px;
+}
+
+#dernierePage #questionCounter {
+    bottom: -85px;
 }
 
 

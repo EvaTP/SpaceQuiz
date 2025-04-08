@@ -1,6 +1,6 @@
 export const quiz_espace = {
-    intro:  "Voulez-vous revoir votre culture générale sur l'espace ? Bonne nouvelle ! Avec ce quiz vous allez mettre en orbite vos connaissances sur l'espace !! 🚀" + `\n`+ "Top chrono, vous avez 10 secondes par question",
-      questions: [
+    intro:  "Voulez-vous revoir votre culture générale sur l'espace ?" + `\n`+ "Avec ce quiz vous allez mettre en orbite vos connaissances !! 🚀" + `\n`+ "⏱️ Top chrono, vous avez 10 secondes par question.",
+    questions: [
         {
           text: "Combien de planètes y a t'il dans le système solaire ? ",
           options: [
@@ -27,7 +27,7 @@ export const quiz_espace = {
             "1. 365 jours",
             "2. 24 heures",
             "3. 1 heure",
-            "4. Le temps que le mari décide de vider le lave-vaisselle"
+            "4. Deux jours"
           ],
           correct_answer: "2. 24 heures"
         },
