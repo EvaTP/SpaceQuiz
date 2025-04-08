@@ -18,6 +18,11 @@ Un autre objectif était d'apprendre à travailler en équipe en utilisant les m
 - CSS
 - Autres : Canva, outil Trello
 
+## Bonus fonctionnalités ✨
+- fusée qui avance avec la progress bar
+- favicon
+- explosion de confetti si toutes les réponses sont correctes
+- police "espace" pour h1
 
 ## 👽 Equipe
 
