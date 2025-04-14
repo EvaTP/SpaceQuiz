@@ -104,22 +104,70 @@ h1{
 
 #container-suivant-timer{
     position : relative;
+    display: flex;
     flex-direction: row;
     margin-top: 4em;
     margin-bottom : 0.50em;
     padding: 0.25em 0.5em;
-    justify-content:space-evenly;
-    align-items:baseline;
+    justify-content:space-between;
+    align-items: center;
     /* padding: 2em;
     justify-content: space-between; */
 }
-#warningTimerContainer{
-    width: 40%;
-    font-size: 2em;
-    font-weight: bold;
+#container-suivant-timer > div:first-child { /* Cibler le conteneur du bouton "Suivant" */
+    /* Styles pour aligner le bouton à gauche */
 }
 
-#warningTimer{
+#warningTimerContainer {
+    /* Retirer le positionnement absolu ici */
+    width: auto;
+    text-align: center;
+    margin-top: 0; /* Réinitialiser la marge haute */
+    margin-left: 10px; /* Ajouter un peu d'espace entre le bouton et le GIF */
+}
+
+/* #warningTimerContainer{
+    /*position: absolute;  Positionnement absolu par rapport à #container-suivant-timer */
+   /* top: 0;  Aligner le haut du GIF avec le haut du conteneur parent */
+   /*  left: 50%; Placer le bord gauche du GIF au centre du conteneur parent */
+    /*transform: translateX(-50%);  Décaler le GIF de moitié de sa largeur vers la gauche pour le centrer horizontalement */
+    /* Autres styles que vous aviez déjà */
+    /*width: auto;  Ajuster la largeur au contenu */
+    /*margin-top: 65px;  Ajuster la marge pour l'éloigner du haut si nécessaire */
+    /*text-align: center; Centrer le GIF à l'intérieur de son conteneur */
+
+    /* width: 40%;
+    font-size: 2em;
+    font-weight: bold; */
+    /* width: 50% auto;
+  
+    text-align: left;
+    width: 40% auto;
+    margin-top: 70px; 
+}*/
+
+#warningTimer {
+     /*position: absolute; Positionnement absolu par rapport à #container-suivant-timer */
+    /*top: 0;  Aligner le haut du compteur avec le haut du conteneur parent */
+    /*left: 70%;  Positionner le bord gauche du compteur à 70% de la largeur du conteneur parent (ajuster selon vos besoins) */
+   /* transform: translateX(-50%);  Ajuster le décalage horizontal pour centrer approximativement par rapport à sa position */
+    /* Autres styles que vous aviez déjà */
+    color: darkblue;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: "Roboto";
+    padding: 8px;
+    border-radius: 50px;
+    border: 6px solid #a7c728;
+    background-color: violet;
+    text-align: center; /* Centrer le texte à l'intérieur du compteur */
+    width: auto; /* Ajuster la largeur au contenu */
+    /*margin-top: 65px;  Conserver la même marge haute pour l'alignement vertical */
+    margin-top: 0; /* Réinitialiser la marge haute */
+    margin-left: 10px; /* Ajouter de l'espace entre le GIF et le compteur */
+}
+
+/* #warningTimer{
     color: darkblue;
     font-size: 2em;
     font-weight: bold;
@@ -131,16 +179,19 @@ h1{
     text-align: left;
     width: 30% auto;
     margin-top: 70px;
-}
+} */
 
 /*  BOUTONS */
 
-/* Bouton "Let's go!" */
+/* Bouton "Décollage !" */
 #start-button{
     margin: 1em auto;
     text-align : center;  /* centre le texte à l'intérieur du bouton */
     padding : 20px 8px;
-    font-size: 2em;
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 0.25em;
+    text-shadow: -3px -3px 5px #953ce2;
     background-color:#a7c728;
     width: 30%;
     border-radius: 0 10px 0 10px;
@@ -323,8 +374,9 @@ margin-top : 230px;
 
 #dernierePage #progress-bar-container {
     margin-top: 350px; /* Ajustez cette valeur pour déplacer la barre de progression dans #dernierePage */
-     margin-left: auto;  /* Pour centrer horizontalement dans #dernierePage si besoin */
-    margin-right: auto;
+    margin-bottom : 200px;
+    margin-left: 150px;  /* Pour centrer horizontalement dans #dernierePage si besoin */
+    margin-right: 150px;
 }
 
 #dernierePage #fuseeProgress {

@@ -20,11 +20,15 @@ questionTexte.appendChild(newParagraph);
 const paragraphTimer = document.querySelector('#warningTimer');
 paragraphTimer.classList.add("conteneurTimer");
 
-// COMPTEURS ⏰
+// ⏳🛸 Sélection de l'image du gif
+const gifCompteur = document.querySelector('#gifcompteur');
+
+
+// ⏰ COMPTEURS 
 let textIndex = 0; // compteur questions
 let scoreIndex = 0;
 let t = 0;
-let myTimeout; 
+let myTimeOut; 
 
 
 // score correct answer
@@ -33,7 +37,7 @@ const scoreBonnesReponses = document.querySelector("#score-correct-answer");
 const message = document.querySelector("#messageJoueur");
 
 
-// VARIABLES BOUTONS 🅱️
+// 🅱️ VARIABLES BOUTONS
 // bouton "Let's go!"
 const boutonStart = document.querySelector("#start-button");
 // bouton "Suivant"
@@ -68,7 +72,7 @@ progressBar.appendChild(questionCounter);
 
 // ****************************************************************************************** //
 
-// affichage de la PREMIERE QUESTION & de ses OPTIONS
+// affichage de la PREMIERE QUESTION & de ses OPTIONS (bouton "Décollage !")
 boutonStart.addEventListener("click", function () {
 
   // Changer le fond d'écran
@@ -96,42 +100,31 @@ boutonStart.addEventListener("click", function () {
   boutonStart.classList.add("hidden");
   
   paragraphTimer.classList.remove("hidden")
+  // ⏳ Afficher le gif au démarrage du timer**
+  gifCompteur.classList.remove("hidden");
+
 
   allButtonsForTimer = choixOptions.querySelectorAll("button"); // Initialiser ici
-  myTimeout = setInterval(() => warningTime(allButtonsForTimer), 1000); // Passer allButtonsForTimer
-  
+  startTimer(); // Démarrer le timer au début du quiz
+
   boutonSuivant.classList.remove("hidden"); // faire apparaitre le bouton "suivant"
 });
 
 // FONCTION LOAD NEXT QUESTION
   // affichage des questions suivantes au clic du bouton "Suivant"
   boutonSuivant.addEventListener("click", function () {
-    clearInterval(myTimeout);  // on remet le compteur à zéro après chaque réponse
-
+    clearInterval(myTimeOut);  // on remet le compteur à zéro après chaque réponse
+    t = 0;
+    startTimer();  // on redémarre le timer
     choixOptions.innerHTML = "";
     textIndex++
   
-      // Vérifier si c'est la dernière question
-      if (textIndex >= quiz_espace.questions.length) {
-        // Cacher le bouton "Suivant" et afficher le bouton "Rejouer"
-        boutonSuivant.classList.add("hidden");
-        scoreBonnesReponses.classList.remove("hidden");
-        scoreBonnesReponses.innerText = ("Bonnes réponses : " + scoreIndex + " / " + quiz_espace.questions.length);
-        message.classList.remove("hidden")
-        boutonRejouer.classList.remove("hidden");
-        paragraphTimer.classList.add("hidden");
-        questionTexte.innerHTML = "";
-  
-        questionTexte.style.backgroundColor = "";
-        questionTexte.style.borderRadius = "";
-        questionTexte.style.borderBottom = "";
-        questionTexte.style.boxShadow = "";
-  
-         // Changer le fond d'écran
-         document.body.classList.remove("quiz-background");
-         document.body.classList.add("replay-background");
-      }
-      
+    // Vérifier si c'est la dernière question
+    if (textIndex >= quiz_espace.questions.length) {
+      displayLastPage(); // Appel de la fonction pour afficher la dernière page
+      return; // Important : Arrêter l'exécution de la fonction ici
+    }
+
     const askedQuestion = document.querySelector("#question-text");
     askedQuestion.innerText = quiz_espace.questions[textIndex].text;
   
@@ -147,8 +140,8 @@ boutonStart.addEventListener("click", function () {
     boutonStart.classList.add("hidden");
     boutonSuivant.classList.remove("hidden"); // faire apparaitre le bouton "suivant"
     boutonSuivant.setAttribute("disabled", "") // rend inactif le bouton suivant tant que l'on n'a pas donné de réponse
-    t = 0
-    myTimeout = setInterval(() => warningTime(allButtonsForTimer), 1000); // Passer allButtonsForTimer
+    // t = 0
+    // myTimeOut = setInterval(() => warningTime(allButtonsForTimer), 1000); // Passer allButtonsForTimer
   });
 
 
@@ -159,7 +152,7 @@ boutonStart.addEventListener("click", function () {
     const correctAnswer = quiz_espace.questions[textIndex].correct_answer; // Recuperer la réponse considerée comme correct depuis quiz_space
 
     checkAnswer(buttonIdClicked, correctAnswer, buttonClicked);
-
+    clearInterval(myTimeOut); // arrête le timer lorsqu'une réponse est donnée
     //bouton "Suivant" DISABLED
     boutonSuivant.removeAttribute("disabled")
 
@@ -202,6 +195,14 @@ boutonStart.addEventListener("click", function () {
     // Mettre à jour la position du texte
     document.querySelector("#progress-bar-text").style.left = `${progressBarLeft}px`; // Positionnez la div au début de la barre
     questionCounter.style.left = `${textPosition - progressBarLeft}px`; // Positionnez le texte par rapport à la div
+
+    // Vérifier si c'est la dernière question après la réponse
+    if (textIndex + 1 >= quiz_espace.questions.length) {
+    displayLastPage(); // Appel de la fonction pour afficher la dernière page
+    setTimeout(displayLastPage, 3500); // Ajout d'un délai de 3.5 secondes
+    choixOptions.innerHTML = ""; // Efface les options de réponse
+    boutonSuivant.classList.add("hidden"); // Cacher le bouton Suivant
+    }
   });
 
 
@@ -221,12 +222,19 @@ function correctAnswerScore(buttonIdClicked, correctAnswer){
     message.innerText = "BRAVO ! Tu es prêt(e) pour coloniser la Lune !! 🎉 🥳"
   }
 
+// ****************
+//   CONFETTIS  🎉
+// ****************
 // Déclenchement des confettis si toutes les réponses sont correctes
   if (scoreIndex === quiz_espace.questions.length) {
     confetti({
-        particleCount: 100,
-        spread: 70,
+        particleCount: 300,  // nombre de confettis
+        spread: 150,         // dispersion des confettis
         origin: { y: 0.6 },
+        duration: 4500,
+        startVelocity: 60,  // vitesse initiale
+        decay: 0.9,  // ralentit la décélération
+        colors: ['#ffffff', '#f1c40f', '#e74c3c', '#3498db', '#2ecc71'] // Ajoute des couleurs
     });
   }
 };
@@ -259,8 +267,17 @@ function checkAnswer(buttonIdClicked, correctAnswer, buttonClicked) {
       }
 }
 
+  // ***************************
+  //   SECTION POUR LE TIMER ⏰
+  // ***************************
 
-// SECTION POUR LE TIMER ⏰
+  function startTimer(){
+    clearInterval(myTimeOut);
+    t = 0;
+    // **S'assurer que le gif est visible au début de chaque timer**
+    gifCompteur.classList.remove("hidden");
+    myTimeOut = setInterval(() => warningTime(allButtonsForTimer), 1000); // Passer allButtonsForTimer
+  }
 
 function warningTime(allButtonsForTimer) {
   const correctAnswerTimer = quiz_espace.questions[textIndex].correct_answer;
@@ -269,7 +286,7 @@ function warningTime(allButtonsForTimer) {
     if(t > 10){
       paragraphTimer.innerHTML = "temps écoulé ! ⏱️"
       paragraphTimer.style.padding = "8px"
-      clearInterval(myTimeout);
+      clearInterval(myTimeOut);
       boutonSuivantTimer.disabled = false; // Uniquement lorsque le timer est terminé
       containerProgressBarTimer.classList.remove("hidden");  // faire apparaitre le container de la progress bar lorsque le timer est terminé
       progressBarTimer.classList.remove("hidden");  // faire apparaitre la progress bar lorsque le timer est terminé
@@ -282,8 +299,33 @@ function warningTime(allButtonsForTimer) {
             button.style.border = "8px solid green";
         }
       });
+       // Cacher le gif quand le temps est écoulé
+       gifCompteur.classList.add("hidden");
     }
 }
+
+// Fonction pour afficher la dernière page
+function displayLastPage() {
+  boutonSuivant.classList.add("hidden");
+  scoreBonnesReponses.classList.remove("hidden");
+  scoreBonnesReponses.innerText = ("Bonnes réponses : " + scoreIndex + " / " + quiz_espace.questions.length);
+  message.classList.remove("hidden")
+  boutonRejouer.classList.remove("hidden");
+  paragraphTimer.classList.add("hidden");
+  // Cacher le gif quand le temps est écoulé
+  gifCompteur.classList.add("hidden");
+  questionTexte.innerHTML = "";
+
+  questionTexte.style.backgroundColor = "";
+  questionTexte.style.borderRadius = "";
+  questionTexte.style.borderBottom = "";
+  questionTexte.style.boxShadow = "";
+
+  // Changer le fond d'écran
+  document.body.classList.remove("quiz-background");
+  document.body.classList.add("replay-background");
+}
+
 
 // Gestion du bouton "Rejouer"
   boutonRejouer.addEventListener("click", function () {

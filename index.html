@@ -34,7 +34,7 @@
 	  </div>
 
 	  <div class="button-container flex-column">
-		<button id="start-button">Let's go!</button>
+		<button id="start-button">Décollage !</button>
 	  </div>
 	 
 	<!-- PROGRESS BAR -->
@@ -47,11 +47,23 @@
 		</div>
 
 
-	  <div class="button-container flex-row" id="container-suivant-timer">
+		<div class="button-container flex-row" id="container-suivant-timer">
+			<div><button id="next-button" class="hidden" disabled>Suivant</button></div>
+			<div style="display: flex; align-items: center;"> <div id="warningTimerContainer" class="">
+				<img src="img/gif-planete (100 x 100 px).gif" width="50" id="gifcompteur" class="hidden" alt="gif-compteur">
+			  </div>
+			  <p id="warningTimer" class="hidden"></p></div>
+		</div>
+
+	  <!-- <div class="button-container flex-row" id="container-suivant-timer">
 		<div><button id="next-button" class="hidden" disabled>Suivant</button></div>
-		<!-- <div id="warningTimerContainer"></div> -->
-			<p id="warningTimer" class="hidden"><!-- Affichage du compte à rebours --></p>
-	  </div>
+		
+		<div id="warningTimerContainer" class="">
+			<img src="img/gif-planete (100 x 100 px).gif" width="50" id="gifcompteur" class="hidden" alt="gif-compteur">
+		</div>
+			
+			<p id="warningTimer" class="hidden"></p> Affichage du compte à rebours -->
+	  <!-- </div> -->
 
 	  <!-- <p id="timerPhrase" class="hidden"></p> -->
 
